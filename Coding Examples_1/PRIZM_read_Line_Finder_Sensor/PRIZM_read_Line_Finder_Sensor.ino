@@ -1,0 +1,29 @@
+/*  PRIZM Controller example program
+ *  This program will read the digital signal of the Line Finder sensor attached to digital port D3.
+ *  If the sensor is facing a relective surface and receiving a relected IR beam, the PRIZM red LED
+ *  will switch on. If the sensor is facing a dark surface, or too far away from a reflective surface
+ *  the red LED will be switched off.
+*/
+  
+  #include <PRIZM.h>      // include the PRIZM Library
+  PRIZM prizm;            // instantiate a PRIZM object “prizm” so we can use its functions
+
+void setup() {            // this code runs once
+
+  prizm.PrizmBegin();     // initialize PRIZM
+  
+}
+
+void loop() {             // this code repeats in a loop
+
+  if(prizm.readLineSensor(3) == HIGH) {prizm.setRedLED(LOW);}    // LED off
+
+  if(prizm.readLineSensor(3) == LOW)  {prizm.setRedLED(HIGH);}   // LED on
+    
+}
+
+
+
+
+
+
